@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project Enquiry Form</title>
+
+<style>
+* { box-sizing: border-box; }
+
+/* ===== BACKGROUND ===== */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    min-height: 100vh;
+    background: url("https://images.unsplash.com/photo-1509395176047-4a66953fd231")
+        center / cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.8));
+    z-index: 0;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 950px;
+    width: 100%;
+    background: rgba(255,255,255,0.42);
+    backdrop-filter: blur(22px);
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 40px 90px rgba(0,0,0,0.6);
+}
+
+/* ===== LEFT PANEL ===== */
+.left-panel {
+    background: linear-gradient(180deg, #0f3c46, #1e5b6b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.left-panel img { max-width: 150px; }
+
+/* ===== FORM ===== */
+.form-panel { padding: 40px; }
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #0f2f36;
+}
+
+.section-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 18px 0;
+    padding-left: 12px;
+    border-left: 5px solid #2c5364;
+    color: #0f2f36;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 26px;
+}
+.full { grid-column: span 2; }
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.9);
+}
+
+.step { display: none; }
+.step.active { display: block; }
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+button {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 18px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.next-btn {
+    background: linear-gradient(135deg, #203a43, #2c5364);
+    color: #fff;
+}
+.back-btn { background: rgba(0,0,0,0.15); }
+.submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #203a43, #2c5364);
+    color: #fff;
+}
+
+/* ===== DUAL LISTBOX ===== */
+.dual-listbox {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.dual-listbox select {
+    height: 240px;
+    background: rgba(15, 47, 54, 0.85);
+    color: #ffffff;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 10px;
+}
+
+.dual-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dual-buttons button {
+    background: linear-gradient(135deg, #203a43, #2c5364);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+    .container { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .dual-listbox { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LEFT LOGO -->
+<div class="left-panel">
+    <img src="https://va1765857408671.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068Ka00000QmmJm&operationContext=DELIVERY&contentId=05TKa00001ym055&page=0&d=/a/Ka000000y7bu/F.k346CmQvVURAwqV0ZRdVtkV.FSYCjjz.6GwPOZxbw&oid=00DKa00000YDA5y&dpt=null&viewId=">
+</div>
+
+<!-- FORM -->
+<div class="form-panel">
+<h2>Project Enquiry Form</h2>
+
+<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DKa00000YDA5y" method="POST">
+
+<input type="hidden" name="oid" value="00DKa00000YDA5y">
+<input type="hidden" name="retURL" value="https://vh-india.github.io/demo/index.html">
+<input type="hidden" name="lead_source" value="Partner">
+
+<!-- STEP 1 -->
+<div class="step active">
+    <div class="section-title">Contact Details</div>
+    <div class="form-grid">
+        <div><label>First Name</label><input name="first_name"></div>
+        <div><label>Last Name</label><input name="last_name"></div>
+        <div><label>Email</label><input type="email" name="email"></div>
+        <div><label>Phone</label><input name="phone"></div>
+        <div class="full"><label>Company</label><input name="company"></div>
+    </div>
+    <div class="buttons">
+        <span></span>
+        <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+    </div>
+</div>
+
+<!-- STEP 2 – SERVICES -->
+<div class="step">
+    <div class="section-title">Services Details</div>
+
+    <div class="dual-listbox">
+
+        <select id="availableServices" multiple>
+            <option>Drinking Water Treatment</option>
+            <option>Industrial Water Treatment</option>
+            <option>Desalination</option>
+            <option>Wastewater Treatment</option>
+            <option>Effluent Treatment</option>
+            <option>Sludge Treatment</option>
+            <option>Water Reclamation</option>
+            <option>Industrial Water Recycling</option>
+            <option>Zero Liquid Discharge (ZLD)</option>
+            <option>Potable Reuse</option>
+            <option>Bio CNG</option>
+            <option>High Purity Water Solution</option>
+        </select>
+
+        <div class="dual-buttons">
+            <button type="button" onclick="moveSelected('availableServices','selectedServices')">></button>
+            <button type="button" onclick="moveAll('availableServices','selectedServices')">>></button>
+            <button type="button" onclick="moveSelected('selectedServices','availableServices')"><</button>
+            <button type="button" onclick="moveAll('selectedServices','availableServices')"><<</button>
+        </div>
+
+        <select id="selectedServices" multiple></select>
+    </div>
+
+    <input type="hidden" name="00NKa00000e5QQH" id="sfServices">
+
+    <div class="buttons">
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+        <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+    </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+    <div class="section-title">Project Details</div>
+    <div class="form-grid">
+        <div><label>Project Type</label><select name="00NKa00000e4zJt"><option></option><option>Desalination</option><option>Water Treatment</option><option>EPC General</option></select></div>
+        <div><label>Project Geography</label><select name="00NKa00000e4zK8"><option></option><option>India</option><option>Middle East</option><option>Europe</option></select></div>
+        
+        <div><label>Bid Decision</label><select name="00NKa00000e4zKI"><option></option><option>Pending</option><option>Bid</option><option>No-Bid</option></select></div>
+        <div><label>Bid Deadline</label><input name="00NKa00000e4zK3" placeholder="MM/DD/YEAR"></div>
+
+        <div><label>Estimated Value</label><input type="number" name="00NKa00000e4zJy"></div>
+        <div class="full"><label>Product Scope Summary</label><textarea name="00NKa00000e4zKD"></textarea></div>
+    </div>
+    <div class="buttons">
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+        <button type="button" class="next-btn" onclick="nextStep()">Next</button>
+    </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+    <div class="section-title">Address Details</div>
+    <div class="form-grid">
+        <div class="full"><label>Street</label><textarea name="street"></textarea></div>
+        <div><label>City</label><input name="city"></div>
+        <div><label>State</label><input name="state"></div>
+        <div><label>Country</label><input name="country"></div>
+        <div><label>Postal Code</label><input name="zip"></div>
+    </div>
+    <div class="buttons">
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+    </div>
+    <button class="submit-btn">Submit Project Enquiry</button>
+</div>
+
+</form>
+</div>
+</div>
+
+<script>
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+
+function showStep(i){
+    steps.forEach((s,idx)=>s.classList.toggle("active",idx===i));
+}
+function nextStep(){ if(currentStep<steps.length-1){ currentStep++; showStep(currentStep);} }
+function prevStep(){ if(currentStep>0){ currentStep--; showStep(currentStep);} }
+
+function moveSelected(from,to){
+    const f=document.getElementById(from);
+    const t=document.getElementById(to);
+    [...f.selectedOptions].forEach(o=>t.add(o));
+    updateHidden();
+}
+function moveAll(from,to){
+    const f=document.getElementById(from);
+    const t=document.getElementById(to);
+    [...f.options].forEach(o=>t.add(o));
+    updateHidden();
+}
+function updateHidden(){
+    const values=[...document.getElementById("selectedServices").options].map(o=>o.value);
+    document.getElementById("sfServices").value=values.join(";");
+}
+</script>
+
+</body>
+</html>
