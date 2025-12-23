@@ -163,7 +163,7 @@ button {
 
 <!-- LEFT LOGO -->
 <div class="left-panel">
-    <img src="https://va1765857408671.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068Ka00000QmmJm&operationContext=DELIVERY&contentId=05TKa00001ym055&page=0&d=/a/Ka000000y7bu/F.k346CmQvVURAwqV0ZRdVtkV.FSYCjjz.6GwPOZxbw&oid=00DKa00000YDA5y&dpt=null&viewId=">
+    <img src="https://va1765857408671.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068Ka00000QmmJm&operationContext=DELIVERY">
 </div>
 
 <!-- FORM -->
@@ -175,6 +175,12 @@ button {
 <input type="hidden" name="oid" value="00DKa00000YDA5y">
 <input type="hidden" name="retURL" value="https://vh-india.github.io/demo/index.html">
 <input type="hidden" name="lead_source" value="Partner">
+
+<!-- ✅ Hidden Bid Decision -->
+<input type="hidden" name="00NKa00000e4zKI" value="No-Bid">
+
+<!-- ✅ Hidden Bid Deadline -->
+<input type="hidden" name="00NKa00000e4zK3" id="bidDeadline">
 
 <!-- STEP 1 -->
 <div class="step active">
@@ -192,12 +198,11 @@ button {
     </div>
 </div>
 
-<!-- STEP 2 – SERVICES -->
+<!-- STEP 2 -->
 <div class="step">
     <div class="section-title">Services Details</div>
 
     <div class="dual-listbox">
-
         <select id="availableServices" multiple>
             <option>Drinking Water Treatment</option>
             <option>Industrial Water Treatment</option>
@@ -235,15 +240,28 @@ button {
 <div class="step">
     <div class="section-title">Project Details</div>
     <div class="form-grid">
-        <div><label>Project Type</label><select name="00NKa00000e4zJt"><option></option><option>Desalination</option><option>Water Treatment</option><option>EPC General</option></select></div>
-        <div><label>Project Geography</label><select name="00NKa00000e4zK8"><option></option><option>India</option><option>Middle East</option><option>Europe</option></select></div>
-        
-        <div><label>Bid Decision</label><select name="00NKa00000e4zKI"><option></option><option>Pending</option><option>Bid</option><option>No-Bid</option></select></div>
-        <div><label>Bid Deadline</label><input name="00NKa00000e4zK3" placeholder="MM/DD/YEAR"></div>
+        <div><label>Project Type</label>
+            <select name="00NKa00000e4zJt">
+                <option></option>
+                <option>Desalination</option>
+                <option>Water Treatment</option>
+                <option>EPC General</option>
+            </select>
+        </div>
+
+        <div><label>Project Geography</label>
+            <select name="00NKa00000e4zK8">
+                <option></option>
+                <option>India</option>
+                <option>Middle East</option>
+                <option>Europe</option>
+            </select>
+        </div>
 
         <div><label>Estimated Value</label><input type="number" name="00NKa00000e4zJy"></div>
         <div class="full"><label>Product Scope Summary</label><textarea name="00NKa00000e4zKD"></textarea></div>
     </div>
+
     <div class="buttons">
         <button type="button" class="back-btn" onclick="prevStep()">Back</button>
         <button type="button" class="next-btn" onclick="nextStep()">Next</button>
@@ -296,6 +314,16 @@ function updateHidden(){
     const values=[...document.getElementById("selectedServices").options].map(o=>o.value);
     document.getElementById("sfServices").value=values.join(";");
 }
+
+/* ✅ Auto set Bid Deadline = Today + 7 days */
+(function setBidDeadline(){
+    const d = new Date();
+    d.setDate(d.getDate() + 7);
+    const mm = String(d.getMonth()+1).padStart(2,'0');
+    const dd = String(d.getDate()).padStart(2,'0');
+    const yyyy = d.getFullYear();
+    document.getElementById("bidDeadline").value = `${mm}/${dd}/${yyyy}`;
+})();
 </script>
 
 </body>
